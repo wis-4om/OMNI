@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANTOR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<button class="currencyConverterButton" onclick="openModal('currencyConverterModal')">Currency Converter</button>
+<button class="unitConverterButton" onclick="openModal('unitConverterModal')">Unit Converter</button>
+<button class="loanCalculatorButton" onclick="openModal('loanCalculatorModal')">Loan Calculator</button>
+<button class="taxEstimatorButton" onclick="openModal('taxEstimatorModal')">Tax Estimator</button>
+
+<div class="container">
+    <div class="calculator">
+            <h2 class="quant">QUANTOR</h2>
+        <input type="text" id="calcDisplay" disabled>
+        <div class="buttons">
+            <button onclick="appendToCalc('1')">1</button>
+            <button onclick="appendToCalc('2')">2</button>
+            <button onclick="appendToCalc('3')">3</button>
+            <button onclick="appendToCalc('+')">+</button>
+            <button onclick="appendToCalc('4')">4</button>
+            <button onclick="appendToCalc('5')">5</button>
+            <button onclick="appendToCalc('6')">6</button>
+            <button onclick="appendToCalc('-')">-</button>
+            <button onclick="appendToCalc('7')">7</button>
+            <button onclick="appendToCalc('8')">8</button>
+            <button onclick="appendToCalc('9')">9</button>
+            <button onclick="appendToCalc('*')">x</button>
+            <button onclick="appendToCalc('0')">0</button>
+            <button onclick="clearCalc()">C</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendToCalc('/')">/</button>
+        </div>
+    </div>
+</div>
+
+<div id="currencyConverterModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('currencyConverterModal')">CLOSE</span>
+        <h2>Currency Converter</h2>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount" oninput="convertCurrency()">
+        
+        <label for="fromCurrency">From:</label>
+        <select id="fromCurrency" onchange="convertCurrency()">
+            <option value="USD">USD - United States Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="NGN">NGN - Nigerian Naira</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="INR">INR - Indian Rupee</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+        </select>
+
+        <label for="toCurrency">To:</label>
+        <select id="toCurrency" onchange="convertCurrency()">
+            <option value="USD">USD - United States Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="NGN">NGN - Nigerian Naira</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="INR">INR - Indian Rupee</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+        </select>
+
+        <h3 id="convertedAmount">Converted Amount: </h3>
+    </div>
+</div>  
+
+<div id="unitConverterModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('unitConverterModal')">CLOSE</span>
+        <h2>Unit Converter</h2>
+        <label for="unitAmount">Amount:</label>
+        <input type="number" id="unitAmount" placeholder="Enter amount" oninput="convertUnit()">
+        
+        <label for="fromUnit">From Unit:</label>
+        <select id="fromUnit" onchange="convertUnit()">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="miles">Miles</option>
+            <option value="inches">Inches</option>
+        </select>
+
+        <label for="toUnit">To Unit:</label>
+        <select id="toUnit" onchange="convertUnit()">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="miles">Miles</option>
+            <option value="inches">Inches</option>
+        </select>
+
+        <h3 id="convertedUnitAmount">Converted Amount: </h3>
+    </div>
+</div>    
+    
+<div id="loanCalculatorModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('loanCalculatorModal')">CLOSE</span>
+        <h2>Loan Interest Calculator</h2>
+        <label for="loanAmount">Principal Amount:</label>
+        <input type="number" id="loanAmount" placeholder="Enter principal amount" oninput="calculateLoan()">
+
+        <label for="interestRate">Interest Rate (%):</label>
+        <input type="number" id="interestRate" placeholder="Enter interest rate" oninput="calculateLoan()">
+
+        <label for="loanTime">Time (years):</label>
+        <input type="number" id="loanTime" placeholder="Enter loan duration in years" oninput="calculateLoan()">
+
+        <h3 id="loanResult">Total Amount: </h3>
+    </div>
+</div>
+
+<div id="taxEstimatorModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('taxEstimatorModal')">CLOSE</span>
+        <h2>Tax Estimator</h2>
+
+        <label for="country">Select Country:</label>
+        <select id="country" onchange="estimateTax()">
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="canada">Canada</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="australia">Australia</option>
+            <option value="germany">Germany</option>
+            <option value="india">India</option>
+            <option value="france">France</option>
+            <option value="mexico">Mexico</option>
+            <option value="south_africa">South Africa</option>
+        </select>
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" placeholder="Enter salary" oninput="estimateTax()">
+
+        <h3 id="taxResult">Estimated Tax: </h3>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
