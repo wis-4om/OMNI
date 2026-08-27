@@ -1,2 +1,2 @@
-# My-Calculator
+# The Wise Calculator
 My Special Wise Calculator
